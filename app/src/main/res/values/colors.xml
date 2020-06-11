@@ -1,13 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
+    <!-- Appbar背景色 -->
+    <color name="colorPrimary">#0075FF</color>
+    <!-- 状态栏颜色 -->
+    <color name="colorPrimaryDark">#0040FF</color>
+    <!-- 控制各个控件被选中时的颜色 -->
+    <color name="colorAccent">@color/colorPrimary</color>
+    <!-- 各个控制控件的默认颜色 -->
+    <color name="colorControlNormal">#E8EAEC</color>
+    <!-- 页面背景色 -->
+    <color name="windowBackground">#F7F8FC</color>
+    <!-- 底部导航栏颜色 -->
+    <color name="navigationColor">#000000</color>
+    <!-- ToolBar上的Title颜色 -->
+    <color name="textColorPrimary">@color/text_main</color>
 
+    <!-- 阴影颜色-->
+    <color name="eve_color">#05000000</color>
+
+    <color name="divide">#EDEDED</color>
+
+    <!-- 蒙层颜色，用于展示该item已选中不可点击,[B3：70] -->
+    <color name="mask_color">#B3FFFFFF</color>
+
+    <!-- 弹框透明底色 -->
+    <color name="dialog_bg_color">#CC000000</color>
+    <!-- 标题、或者是文本主题颜色，用于一级文字。如导航栏标题，产品信息，个人中心，弹窗状等 -->
+    <color name="text_main">#FF333333</color>
+    <!-- 二级标题颜色，用于二级文字信息。如导航栏二级标题，产品辅助信息，分享，弹窗副文本内容等 -->
+    <color name="text_sub">#FF838383</color>
+    <!-- 文本内容颜色，用于大面积描述性文本。如标题下面的正文。 -->
+    <color name="text_content">#FF666666</color>
+    <!-- 说明类型文字颜色，用于说明、解释性文字信息。如产品交易记录时间显示，产品下介绍内容等 -->
+    <color name="text_decs">#FF999999</color>
+    <!-- 输入框说明类型文字颜色，用于登录/注册输入框提示信息。 -->
+    <color name="text_hint">#FFBBBEC7</color>
+    <!-- 不可用的字体颜色 -->
+    <color name="text_disable">#FFCCCCCC</color>
+
+    <!-- 项目警示性信息颜色 -->
+    <color name="text_notice">#FFFF4040</color>
+
+    <!-- 正常按钮颜色 -->
+    <color name="btn_color">@color/colorPrimary</color>
+    <!-- 按钮按下的颜色（一般系统有水波纹效果） -->
+    <color name="btn_color_press">@color/colorPrimaryDark</color>
+    <!-- 不可点击按钮的颜色 -->
+    <color name="btn_color_disable">#237CE5</color>
+
+    <!-- 提示信息背景色，比如用于断网提示背景 -->
+    <color name="tps_bg_color">#FFFFF6E6</color>
+
+    <color name="red">#FFFF4040</color>
+    <color name="yellow">#FFFEBE06</color>
+    <color name="blue">@color/colorPrimary</color>
+    <color name="green">#FF19BE6B</color>
+    <color name="orange">#FFFFB55A</color>
     <color name="white">#ffffff</color>
-
     <color name="black">#000000</color>
-
-    <color name="divide">#cccccc</color>
 
 </resources>

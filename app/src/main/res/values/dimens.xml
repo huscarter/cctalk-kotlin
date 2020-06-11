@@ -1,9 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
+    <!-- 标题栏高度 -->
     <dimen name="title_height">56dp</dimen>
-
+    <!--  条目高度-->
     <dimen name="item_height">48dp</dimen>
 
+    <!-- 分割线高度-->
     <dimen name="divide">0.5dp</dimen>
+
+    <!-- 状态栏高度（系统不可更改）-->
+    <dimen name="status_bar_height">25dp</dimen>
+
+    <!-- 标题栏菜单宽度和高度（一般推荐采用标题栏高的正方形）-->
+    <dimen name="bar_menu_width">56dp</dimen>
+
+    <!-- 边距（内容到屏幕的距离）-->
+    <dimen name="margin">12dp</dimen>
+
+    <!--  卡片、条目之间的上下间距-->
+    <dimen name="margin_item">10dp</dimen>
+
+    <!-- 主要按钮的高度-->
+    <dimen name="btn_height">49dp</dimen>
+    <!-- 在条目里按钮的高度-->
+    <dimen name="item_btn_height">30dp</dimen>
+    <!-- 在条目里按钮的宽度,这里一般做最小宽度限制-->
+    <dimen name="item_btn_width">60dp</dimen>
+
+    <!--  输入框的高度-->
+    <dimen name="edit_height">40dp</dimen>
+
+    <!--  搜索框高度-->
+    <dimen name="search_height">64dp</dimen>
+
+    <!--  超大文本文字尺寸-->
+    <dimen name="font_size_max">27dp</dimen>
+    <!--  大文本文字尺寸-->
+    <dimen name="font_size_big">23dp</dimen>
+    <!--  标题文字尺寸-->
+    <dimen name="font_size_title">17dp</dimen>
+    <!--  普通按钮字体-->
+    <dimen name="font_size_btn">16dp</dimen>
+    <!--  二级标题文字尺寸-->
+    <dimen name="font_size_sub">15dp</dimen>
+    <!--  文本文字尺寸-->
+    <dimen name="font_size">14dp</dimen>
+    <!--  说明文字尺寸-->
+    <dimen name="font_size_desc">13dp</dimen>
+    <!--  输入框提示文字尺寸-->
+    <dimen name="font_size_hit">12dp</dimen>
+    <!--  小文本文字尺寸，比如红点消息个数-->
+    <dimen name="font_size_min">11dp</dimen>
+
+    <!-- 卡片圆角-->
+    <dimen name="radius">5dp</dimen>
+    <!-- 普通按钮圆角-->
+    <dimen name="radius_btn">6dp</dimen>
+    <!-- 小按钮圆角-->
+    <dimen name="radius_btn_min">3dp</dimen>
+    <!-- 椭圆按钮圆角-->
+    <dimen name="radius_oval_btn">20dp</dimen>
+    <!-- 普通弹框圆角-->
+    <dimen name="radius_dialog">15dp</dimen>
+    <!-- 底部弹框圆角-->
+    <dimen name="radius_dialog_sheet">15dp</dimen>
+    <!-- 活动弹框圆角（也可以视为普通弹框）-->
+    <dimen name="radius_dialog_activity">15dp</dimen>
+    <!-- 搜索圆角-->
+    <dimen name="radius_search">25dp</dimen>
+
 </resources>
