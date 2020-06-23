@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Appbar背景色 -->
+    <!-- Appbar背景色,主题色 -->
     <color name="colorPrimary">#0075FF</color>
     <!-- 状态栏颜色 -->
     <color name="colorPrimaryDark">#0040FF</color>
@@ -15,10 +15,12 @@
     <!-- ToolBar上的Title颜色 -->
     <color name="textColorPrimary">@color/text_main</color>
 
+    <color name="transport_white">#CCffffff</color>
+
     <!-- 阴影颜色-->
     <color name="eve_color">#05000000</color>
 
-    <color name="divide">#EDEDED</color>
+    <color name="divide">#d7d7d7</color>
 
     <!-- 蒙层颜色，用于展示该item已选中不可点击,[B3：70] -->
     <color name="mask_color">#B3FFFFFF</color>
@@ -44,12 +46,15 @@
     <!-- 正常按钮颜色 -->
     <color name="btn_color">@color/colorPrimary</color>
     <!-- 按钮按下的颜色（一般系统有水波纹效果） -->
-    <color name="btn_color_press">@color/colorPrimaryDark</color>
+    <color name="btn_color_un">@color/colorPrimaryDark</color>
     <!-- 不可点击按钮的颜色 -->
     <color name="btn_color_disable">#237CE5</color>
 
     <!-- 提示信息背景色，比如用于断网提示背景 -->
     <color name="tps_bg_color">#FFFFF6E6</color>
+
+    <!-- 头像颜色 -->
+    <color name="portrait_gray">#999999</color>
 
     <color name="red">#FFFF4040</color>
     <color name="yellow">#FFFEBE06</color>
@@ -58,5 +63,6 @@
     <color name="orange">#FFFFB55A</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
+    <color name="gray">#cccccc</color>
 
 </resources>

@@ -9,6 +9,11 @@ object Global{
     /**
      * The im app key for the develop env
      */
-    const val IM_APP_KEY = "pvxdm17jxrm7r"
+    const val IM_APP_KEY = "pvxdm17jpezbr"
+    const val IM_APP_SECRET = "dizReMIQEBam6"
+
+    const val MOBILE = "mobile"
+    const val NAME = "name"
+    const val TOKEN = "token"
 
 }

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- tool bar attr -->
+    <declare-styleable name="AppToolBar">
+        <attr name="title" format="string" />
+        <attr name="title_text_size" format="dimension" />
+        <attr name="title_text_color" format="color" />
+        <attr name="menu_width" format="dimension" />
+        <attr name="tips_text" format="string" />
+        <attr name="tips_text_color" format="color" />
+        <attr name="tips_text_size" format="dimension" />
+        <attr name="tips_background" format="reference|color" />
+    </declare-styleable>
+</resources>

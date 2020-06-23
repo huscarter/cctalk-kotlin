@@ -5,7 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.whh.cctalk.util.Logger
+import com.whh.cctalk.util.LogUtil
 
 /**
  * Create by huscarter@163.com on 2020/6/11
@@ -27,7 +27,7 @@ abstract class BaseFragment:Fragment(){
         super.onViewCreated(view, savedInstanceState)
         //
         initData()
-        Logger.i(TAG,"onViewCreated")
+        LogUtil.i(TAG,"onViewCreated")
         //
         initView()
     }
@@ -49,6 +49,6 @@ abstract class BaseFragment:Fragment(){
 
     override fun onDestroyView() {
         super.onDestroyView()
-        Logger.i(TAG,"onDestroyView")
+        LogUtil.i(TAG,"onDestroyView")
     }
 }

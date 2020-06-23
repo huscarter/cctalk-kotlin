@@ -3,15 +3,24 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
+    // android 10.0 -> 29
+    // android 9.0 -> 28
+    // android 8.1 -> 27
+    // android 8.0 -> 26
+    // android 7.1 -> 25
+    // android 7.0 -> 24
+    // android 6.0 -> 23
+    // android 5.1 -> 22
+    // android 5.0 -> 21
+    // android 4.2 -> 17
+    compileSdkVersion COMPILE_SDK_VERSION as int
 
     defaultConfig {
-        applicationId "com.whh.cctalk"
-        // android 5.0
-        minSdkVersion 21
-        targetSdkVersion 29
-        versionCode 100
-        versionName "1.0.0"
+        applicationId APPLICATION_ID
+        minSdkVersion MIN_SDK_VERSION as int
+        targetSdkVersion TARGET_SDK_VERSION as int
+        versionCode VERSION_CODE as int
+        versionName VERSION_NAME
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -23,15 +32,44 @@ android {
         }
     }
 
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'androidx.appcompat:appcompat:1.0.2'
     implementation 'androidx.core:core-ktx:1.0.2'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+
+    // app compat
+    implementation "androidx.appcompat:appcompat:$APPCOMPAT_VERSION"
+
+    // recycler
+    implementation "androidx.recyclerview:recyclerview:$APPCOMPAT_VERSION"
+
+    // retrofit
+    implementation "com.squareup.retrofit2:retrofit:$RETROFIT_VERSION"
+    implementation "com.squareup.retrofit2:converter-gson:$RETROFIT_VERSION"
+    implementation("com.squareup.retrofit2:adapter-rxjava2:$RETROFIT_VERSION") {
+        exclude group: "io.reactivex.rxjava2", module: "rxjava"
+    }
+
+    //rxAndroid，contain rxJava:2.2.6
+    implementation "io.reactivex.rxjava2:rxandroid:$RXANDROID_VERSION"
+
+    // 列表组件
+    implementation "com.scwang.smart:refresh-layout-kernel:$RECYCLER_VERSION"      //核心必须依赖
+    implementation "com.scwang.smart:refresh-header-classics:$RECYCLER_VERSION"    //经典刷新头
+    implementation "com.scwang.smart:refresh-footer-classics:$RECYCLER_VERSION"    //经典加载
+
+    // include modular
+    implementation project(":IMKit")
+
 }

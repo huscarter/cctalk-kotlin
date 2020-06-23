@@ -1,15 +1,13 @@
 package com.whh.cctalk.activity
 
 import android.graphics.Point
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
 import android.view.Gravity
 import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.whh.cctalk.R
 import com.whh.cctalk.fragment.ContractListFragment
-import com.whh.cctalk.fragment.MessageListFragment
+import com.whh.cctalk.fragment.ChatListFragment
 import com.whh.cctalk.fragment.PersonalFragment
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -18,9 +16,9 @@ import kotlinx.android.synthetic.main.activity_main.*
  */
 class MainActivity : BaseActivity() {
 
-    private val tabTitles = arrayOf("Message List", "Contract List", "Personal")
+    private val tabTitles = arrayOf("Chat List", "Contract List", "Personal")
     private val tabContents = arrayOf(
-        MessageListFragment::class.java,
+        ChatListFragment::class.java,
         ContractListFragment::class.java,
         PersonalFragment::class.java
     )

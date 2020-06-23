@@ -17,4 +17,25 @@
         <item name="android:textColorPrimary">@color/textColorPrimary</item>
     </style>
 
+    <!-- 普通输入框样式 -->
+    <style name="appEditStyle">
+        <item name="android:textColor">@color/text_main</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="android:textSize">@dimen/font_size</item>
+    </style>
+
+    <!-- 普通按钮主题 -->
+    <style name="appBtnStyle">
+        <item name="android:background">@drawable/ripple_btn</item>
+        <item name="android:stateListAnimator">@null</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <!-- title style -->
+    <style name="titleStyle" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">@dimen/font_size_title</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
 </resources>

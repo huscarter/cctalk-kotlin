@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 获得焦点但未按下时的背景图片 -->
+    <item android:drawable="@drawable/shape_btn" android:state_enabled="true" android:state_pressed="false"/>
+    <!-- 不可用 -->
+    <item android:drawable="@drawable/shape_btn_disable" android:state_enabled="false" />
+    <!-- 按下时的背景图片 -->
+<!--    <item android:drawable="@drawable/shape_btn_un" android:state_enabled="true" android:state_pressed="true" />-->
+    <item android:drawable="@drawable/ripple_btn" android:state_enabled="true" android:state_pressed="true" />
+</selector>

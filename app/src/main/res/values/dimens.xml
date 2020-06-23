@@ -21,7 +21,7 @@
     <dimen name="margin_item">10dp</dimen>
 
     <!-- 主要按钮的高度-->
-    <dimen name="btn_height">49dp</dimen>
+    <dimen name="btn_height">45dp</dimen>
     <!-- 在条目里按钮的高度-->
     <dimen name="item_btn_height">30dp</dimen>
     <!-- 在条目里按钮的宽度,这里一般做最小宽度限制-->
@@ -68,5 +68,13 @@
     <dimen name="radius_dialog_activity">15dp</dimen>
     <!-- 搜索圆角-->
     <dimen name="radius_search">25dp</dimen>
+
+    <!-- load dialog size-->
+    <dimen name="loading_size">80dp</dimen>
+
+    <!-- -->
+    <dimen name="portrait_size">50dp</dimen>
+
+    <dimen name="icon_size">18dp</dimen>
 
 </resources>

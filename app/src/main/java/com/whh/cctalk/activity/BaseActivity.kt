@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.whh.cctalk.util.Logger
+import com.whh.cctalk.util.LogUtil
 
 /**
  * Create by huscarter@163.com on 2020/6/11
@@ -33,7 +33,7 @@ abstract class BaseActivity : AppCompatActivity() {
         //
         initData()
 
-        Logger.i(TAG, "onCreate")
+        LogUtil.i(TAG, "onCreate")
 
         //
         initView()
@@ -56,7 +56,7 @@ abstract class BaseActivity : AppCompatActivity() {
 
     override fun onDestroy() {
         super.onDestroy()
-        Logger.i(TAG, "onDestroy")
+        LogUtil.i(TAG, "onDestroy")
     }
 
 }
