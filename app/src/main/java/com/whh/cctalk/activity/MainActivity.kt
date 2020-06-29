@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.FrameLayout
 import android.widget.TextView
 import com.whh.cctalk.R
+import com.whh.cctalk.business.ChatListBusiness
 import com.whh.cctalk.fragment.ContractListFragment
 import com.whh.cctalk.fragment.ChatListFragment
 import com.whh.cctalk.fragment.PersonalFragment
@@ -27,6 +28,8 @@ class MainActivity : BaseActivity() {
 
     private var currentIndex = 0
 
+    private val chatBusiness = ChatListBusiness()
+
     override fun getLayout(): Int {
         return R.layout.activity_main
     }
@@ -34,6 +37,9 @@ class MainActivity : BaseActivity() {
     override fun initData() {
         TAG = MainActivity::class.java.simpleName
         windowManager.defaultDisplay.getSize(point)
+
+        //
+        chatBusiness.imConnect(context)
     }
 
     override fun initView() {

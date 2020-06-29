@@ -12,12 +12,10 @@ import androidx.recyclerview.widget.RecyclerView
  * <p>
  */
 abstract class BaseListAdapter<T> : RecyclerView.Adapter<BaseListAdapter<T>.ListViewHolder> {
-    private val list = ArrayList<T>()
-
-    constructor()
+    var list:List<T>
 
     constructor(list: List<T>) {
-        this.list.addAll(list)
+        this.list = list
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {

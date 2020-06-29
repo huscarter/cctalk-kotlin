@@ -15,7 +15,7 @@ class PersonalFragment : BaseFragment() {
     }
 
     override fun initData() {
-        //
+        TAG = PersonalFragment::class.java.simpleName
     }
 
     override fun initView() {

@@ -3,7 +3,8 @@
     <!-- Appbar背景色,主题色 -->
     <color name="colorPrimary">#0075FF</color>
     <!-- 状态栏颜色 -->
-    <color name="colorPrimaryDark">#0040FF</color>
+<!--    <color name="colorPrimaryDark">#0040FF</color>-->
+    <color name="colorPrimaryDark">@color/transport_white</color>
     <!-- 控制各个控件被选中时的颜色 -->
     <color name="colorAccent">@color/colorPrimary</color>
     <!-- 各个控制控件的默认颜色 -->
@@ -14,6 +15,8 @@
     <color name="navigationColor">#000000</color>
     <!-- ToolBar上的Title颜色 -->
     <color name="textColorPrimary">@color/text_main</color>
+    <!-- -->
+    <color name="transport">#00000000</color>
 
     <color name="transport_white">#CCffffff</color>
 

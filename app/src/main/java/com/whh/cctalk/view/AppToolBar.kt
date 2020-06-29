@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.LinearLayout
 import com.whh.cctalk.R
+import com.whh.cctalk.util.LogUtil
 import kotlinx.android.synthetic.main.view_toolbar.view.*
 
 /**
@@ -15,6 +16,10 @@ import kotlinx.android.synthetic.main.view_toolbar.view.*
  * <p>
  */
 class AppToolBar : LinearLayout {
+    companion  object{
+        private val TAG = AppToolBar::class.java.simpleName
+    }
+
     /**
      *
      */
@@ -46,23 +51,37 @@ class AppToolBar : LinearLayout {
         initView(context, attrs)
     }
 
+    /**
+     *
+     */
     private fun initView(context: Context?, attrs: AttributeSet?) {
-        this.layoutParams = ViewGroup.LayoutParams(
-            ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT
-        )
         this.orientation = LinearLayout.VERTICAL
 
+        // add toolbar
         val toolbar = LayoutInflater.from(context).inflate(R.layout.view_toolbar, null)
+        toolbar.layoutParams = LinearLayout.LayoutParams(
+            LinearLayout.LayoutParams.MATCH_PARENT,
+            context!!.resources.getDimension(R.dimen.title_height_inner).toInt()
+        )
         addView(toolbar)
 
+        // add divide
+        val divide = LayoutInflater.from(context).inflate(R.layout.view_divide, null)
+//        divide.layoutParams = LinearLayout.LayoutParams(
+//            LinearLayout.LayoutParams.MATCH_PARENT,
+//            context!!.resources.getDimension(R.dimen.divide).toInt()
+//        )
+        addView(divide)
+
+        // set attrs
         if (attrs != null) {
             val typedArray = context?.obtainStyledAttributes(attrs, R.styleable.AppToolBar)
+            //
             tv_title.text = typedArray?.getString(R.styleable.AppToolBar_title)
+            //
+            divide.setBackgroundColor(typedArray?.getColor(R.styleable.AppToolBar_divide_color,context?.resources.getColor(R.color.divide))!!)
         }
 
-        val divide = LayoutInflater.from(context).inflate(R.layout.view_divide, null)
-        addView(divide)
     }
 
     fun setTitle(title:String){

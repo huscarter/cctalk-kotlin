@@ -15,12 +15,17 @@ import com.whh.cctalk.util.LogUtil
  * 对外传值:<BR/>
  */
 abstract class BaseFragment:Fragment(){
+    var rootView:View?=null
+
     companion object{
         var TAG = BaseFragment::class.java.simpleName
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(getLayout(),container,false)
+        if(rootView==null){
+            rootView = inflater.inflate(getLayout(),container,false)
+        }
+        return rootView
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

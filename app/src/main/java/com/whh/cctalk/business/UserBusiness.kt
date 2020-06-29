@@ -4,7 +4,7 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import com.whh.cctalk.activity.LoginActivity
-import com.whh.cctalk.bean.UserBean
+import com.whh.cctalk.mode.bean.UserBean
 import com.whh.cctalk.net.IUser
 import com.whh.cctalk.net.retrofit.CommonObserver
 import com.whh.cctalk.net.retrofit.RxRequest
@@ -28,7 +28,7 @@ class UserBusiness : BaseBusiness() {
     /**
      * To get the im token
      */
-    fun getImToken(context: Context?, userId:String, callback: (userBean:UserBean)->Unit) {
+    fun getImToken(context: Context?, userId:String, callback: (userBean: UserBean)->Unit) {
         val param = HashMap<String, String>()
         param["userId"] = userId
 

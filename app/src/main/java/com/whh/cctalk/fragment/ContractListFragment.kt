@@ -12,7 +12,7 @@ class ContractListFragment :  BaseFragment() {
     }
 
     override fun initData() {
-        //
+        TAG = ContractListFragment::class.java.simpleName
     }
 
     override fun initView() {

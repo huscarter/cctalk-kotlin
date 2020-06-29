@@ -1,6 +1,6 @@
 package com.whh.cctalk.net
 
-import com.whh.cctalk.bean.UserBean
+import com.whh.cctalk.mode.bean.UserBean
 import io.reactivex.Observable
 import retrofit2.http.FieldMap
 import retrofit2.http.FormUrlEncoded

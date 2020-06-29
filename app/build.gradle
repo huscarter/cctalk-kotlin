@@ -69,7 +69,10 @@ dependencies {
     implementation "com.scwang.smart:refresh-header-classics:$RECYCLER_VERSION"    //经典刷新头
     implementation "com.scwang.smart:refresh-footer-classics:$RECYCLER_VERSION"    //经典加载
 
+    // event bus
+    implementation "org.greenrobot:eventbus:$EVENT_BUS_VERSION"
+
     // include modular
-    implementation project(":IMKit")
+    implementation project(":IMLib")
 
 }

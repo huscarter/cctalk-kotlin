@@ -16,4 +16,6 @@ object Global{
     const val NAME = "name"
     const val TOKEN = "token"
 
+    const val PAGE_SIZE = 20
+
 }

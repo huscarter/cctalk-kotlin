@@ -10,5 +10,6 @@
         <attr name="tips_text_color" format="color" />
         <attr name="tips_text_size" format="dimension" />
         <attr name="tips_background" format="reference|color" />
+        <attr name="divide_color" format="reference|color" />
     </declare-styleable>
 </resources>

@@ -1,27 +1,30 @@
 package com.whh.cctalk.fragment
 
-import android.content.Context
-import android.content.Intent
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.whh.cctalk.Global
 import com.whh.cctalk.R
-import com.whh.cctalk.activity.LoginActivity
 import com.whh.cctalk.adapter.ChatListAdapter
 import com.whh.cctalk.business.ChatListBusiness
+import com.whh.cctalk.mode.event.ConnectionEvent
+import com.whh.cctalk.mode.event.MessageEvent
 import com.whh.cctalk.util.LogUtil
-import com.whh.cctalk.util.ShareUtil
+import com.whh.cctalk.view.CommonDivide
 import io.rong.imlib.RongIMClient
 import io.rong.imlib.model.Conversation
 import kotlinx.android.synthetic.main.fragment_chat_list.*
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
 
 /**
  * The message list page
  */
 class ChatListFragment : BaseFragment() {
 
-    val chatBusiness = ChatListBusiness()
+    private val chatBusiness = ChatListBusiness()
 
-    val chatList = ArrayList<Conversation>()
-    val adapter: ChatListAdapter = ChatListAdapter(chatList)
+    private val chatList = ArrayList<Conversation>()
+    private val adapter: ChatListAdapter = ChatListAdapter(chatList)
 
     override fun getLayout(): Int {
         return R.layout.fragment_chat_list
@@ -29,50 +32,68 @@ class ChatListFragment : BaseFragment() {
 
     override fun initData() {
         //
-        imConnect(context)
+        TAG = ChatListFragment::class.java.simpleName
         //
+        EventBus.getDefault().register(this)
     }
 
     override fun initView() {
+        rv.layoutManager = LinearLayoutManager(context)
+        rv.adapter = adapter
+        rv.addItemDecoration(CommonDivide(context,LinearLayoutManager.VERTICAL))
         //
+        refresh_layout.setOnRefreshListener {
+            chatList.clear()
+            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetChatList)
+        }
+        refresh_layout.setOnLoadMoreListener {
+            var timestamp = 0L
+            if(chatList.size>0){
+                timestamp = chatList[chatList.size-1].sentTime
+            }
+            chatBusiness.getChatList(timestamp,Global.PAGE_SIZE,::afterGetChatList)
+        }
     }
 
-    /**
-     * To get the im token
-     */
-    private fun imConnect(context: Context?) {
-        val token = ShareUtil.getString(Global.TOKEN, null)
-        RongIMClient.connect(token, object : RongIMClient.ConnectCallback() {
-            override fun onSuccess(userId: String?) {
-                LogUtil.i(TAG,"onSuccess userId:$userId")
-                //
-                app_bar.setTitle("chat list")
-                // To get chat list
-                chatBusiness.getChatList {
-                    chatList.clear()
-                    chatList.addAll(it)
-                    adapter.notifyDataSetChanged()
-                }
-            }
+    private fun afterGetChatList(list:List<Conversation>?){
+        if(list!=null){
+            chatList.addAll(list)
+        }
+        adapter.notifyDataSetChanged()
 
-            /**
-             * 31004	Token 无效
-             * 31005	AppKey 与 Token 不否匹配
-             * 30011	Socket 断开
-             * 30002	连接不可用, 连接相关的错误码，SDK 会做好自动重连，开发者无须处理
-             * -1	未知错误
-             */
-            override fun onError(err: RongIMClient.ErrorCode?) {
-                //
-            }
-
-            /**
-             *  回调, 可能是 token 过期造成. 需要向服务器重新获取 Token 并建立连接
-             */
-            override fun onTokenIncorrect() {
-                context?.startActivity(Intent(context, LoginActivity::class.java))
-            }
-        })
+        if(refresh_layout.isLoading){
+            refresh_layout.finishLoadMore()
+        }else{
+            refresh_layout.finishRefresh()
+        }
+        LogUtil.i(TAG,"afterGetChatList size:${chatList.size}")
     }
 
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onMessageReceiveEvent(event:MessageEvent){
+        LogUtil.i(TAG,"onMessageReceiveEvent:${event.left}")
+        if(event.left==0){
+            chatList.clear()
+            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetChatList)
+        }
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onConnectEvent(event:ConnectionEvent){
+        LogUtil.i(TAG,"onConnectEvent")
+        if(event.status==RongIMClient.ErrorCode.CONNECTED){
+            //
+            app_bar.setTitle("chat list")
+            //
+            chatList.clear()
+            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetChatList)
+        }else{
+            app_bar.setTitle("connect failed")
+        }
+    }
+
+    override fun onStop() {
+        super.onStop()
+        EventBus.getDefault().unregister(this)
+    }
 }
