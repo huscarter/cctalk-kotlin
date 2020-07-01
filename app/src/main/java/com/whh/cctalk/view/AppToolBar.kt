@@ -3,8 +3,10 @@ package com.whh.cctalk.view
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
+import android.widget.Toolbar
 import com.whh.cctalk.R
 import com.whh.cctalk.util.LogUtil
 import kotlinx.android.synthetic.main.view_toolbar.view.*
@@ -65,6 +67,7 @@ class AppToolBar : LinearLayout {
         )
         addView(toolbar)
 
+
         // add divide
         val divide = LayoutInflater.from(context).inflate(R.layout.view_divide, null)
 //        divide.layoutParams = LinearLayout.LayoutParams(
@@ -80,7 +83,11 @@ class AppToolBar : LinearLayout {
             tv_title.text = typedArray?.getString(R.styleable.AppToolBar_title)
             //
             divide.setBackgroundColor(typedArray?.getColor(R.styleable.AppToolBar_divide_color,context?.resources.getColor(R.color.divide))!!)
+
+            setNavigationVisible(typedArray?.getBoolean(R.styleable.AppToolBar_navigationVisible,true))
         }
+
+        this.toolbar.navigationIcon?.setTint(context?.resources.getColor(R.color.colorPrimary))
 
     }
 
@@ -90,6 +97,18 @@ class AppToolBar : LinearLayout {
 
     fun getTitle():String{
         return tv_title.text.toString()
+    }
+
+    fun setNavigationVisible(visible:Boolean){
+        if(visible){
+            this.toolbar.navigationIcon = context.resources.getDrawable(R.drawable.prev)
+        }else{
+            this.toolbar.navigationIcon = null
+        }
+    }
+
+    fun setNavigationListener(listener: View.OnClickListener){
+        this.toolbar.setNavigationOnClickListener(listener)
     }
 
 }

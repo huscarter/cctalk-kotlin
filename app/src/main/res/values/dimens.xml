@@ -17,6 +17,7 @@
 
     <!-- 边距（内容到屏幕的距离）-->
     <dimen name="margin">12dp</dimen>
+    <dimen name="margin_small">6dp</dimen>
 
     <!--  卡片、条目之间的上下间距-->
     <dimen name="margin_item">10dp</dimen>
@@ -30,6 +31,9 @@
 
     <!--  输入框的高度-->
     <dimen name="edit_height">40dp</dimen>
+
+    <!--  输入框的padding-->
+    <dimen name="edit_padding">5dp</dimen>
 
     <!--  搜索框高度-->
     <dimen name="search_height">64dp</dimen>
@@ -76,6 +80,10 @@
     <!-- -->
     <dimen name="portrait_size">50dp</dimen>
 
+    <dimen name="portrait_size_small">40dp</dimen>
+
     <dimen name="icon_size">12dp</dimen>
+
+    <!-- ==================================start page special================================ -->
 
 </resources>

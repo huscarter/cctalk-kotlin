@@ -13,8 +13,43 @@ object DateUtil {
     /**
      *
      */
-    fun format(date: Date,format:String):String{
+    fun format(date: Date?,format:String):String{
+        if(date==null){
+            return ""
+        }
         val dateFormat = SimpleDateFormat(format)
         return dateFormat.format(date)
     }
+
+    fun format(date: Date?):String{
+        if(date==null){
+            return ""
+        }
+        val dateFormat = SimpleDateFormat("YYYY/MM/dd HH:mm")
+        return dateFormat.format(date)
+    }
+
+    fun  formatChatTime(time: Long?):String{
+        if(time==null){
+            return ""
+        }
+        val nowTime = Date().time
+
+        return if(nowTime-time<24*60*60*1000){
+            val dateFormat = SimpleDateFormat("HH:mm")
+            dateFormat.format(time)
+        }else{
+            val dateFormat = SimpleDateFormat("YYYY")
+            if(dateFormat.format(Date())==dateFormat.format(Date(time))){
+                val dateFormat = SimpleDateFormat("MM/dd HH:mm")
+                dateFormat.format(time)
+            }else{
+                val dateFormat = SimpleDateFormat("YYYY/MM/dd HH:mm")
+                dateFormat.format(time)
+            }
+        }
+
+    }
+
+
 }

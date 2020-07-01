@@ -1,5 +1,6 @@
 package com.whh.cctalk.adapter
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,8 +14,10 @@ import androidx.recyclerview.widget.RecyclerView
  */
 abstract class BaseListAdapter<T> : RecyclerView.Adapter<BaseListAdapter<T>.ListViewHolder> {
     var list:List<T>
+    var context:Context?
 
-    constructor(list: List<T>) {
+    constructor(context: Context?,list: List<T>) {
+        this.context = context
         this.list = list
     }
 

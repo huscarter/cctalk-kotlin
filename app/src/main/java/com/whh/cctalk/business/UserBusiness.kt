@@ -3,6 +3,8 @@ package com.whh.cctalk.business
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.provider.Settings
+import com.whh.cctalk.Global
 import com.whh.cctalk.activity.LoginActivity
 import com.whh.cctalk.mode.bean.UserBean
 import com.whh.cctalk.net.IUser
@@ -40,6 +42,9 @@ class UserBusiness : BaseBusiness() {
             .subscribeWith(object : CommonObserver<UserBean>(context) {
                 override fun onNext(userBean: UserBean) {
                     super.onNext(userBean)
+                    //
+                    ShareUtil.setString(Global.USER_ID,userId)
+                    //
                     callback(userBean)
                 }
             })

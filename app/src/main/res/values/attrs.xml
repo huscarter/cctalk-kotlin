@@ -11,5 +11,6 @@
         <attr name="tips_text_size" format="dimension" />
         <attr name="tips_background" format="reference|color" />
         <attr name="divide_color" format="reference|color" />
+        <attr name="navigationVisible" format="boolean" />
     </declare-styleable>
 </resources>

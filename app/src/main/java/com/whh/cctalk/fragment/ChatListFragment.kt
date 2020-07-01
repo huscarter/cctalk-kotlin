@@ -24,7 +24,7 @@ class ChatListFragment : BaseFragment() {
     private val chatBusiness = ChatListBusiness()
 
     private val chatList = ArrayList<Conversation>()
-    private val adapter: ChatListAdapter = ChatListAdapter(chatList)
+    private var adapter: ChatListAdapter? = null
 
     override fun getLayout(): Int {
         return R.layout.fragment_chat_list
@@ -35,31 +35,35 @@ class ChatListFragment : BaseFragment() {
         TAG = ChatListFragment::class.java.simpleName
         //
         EventBus.getDefault().register(this)
+
+        adapter = ChatListAdapter(context,chatList)
     }
 
     override fun initView() {
+        app_bar.setNavigationVisible(false)
+
         rv.layoutManager = LinearLayoutManager(context)
         rv.adapter = adapter
         rv.addItemDecoration(CommonDivide(context,LinearLayoutManager.VERTICAL))
         //
         refresh_layout.setOnRefreshListener {
             chatList.clear()
-            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetChatList)
+            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetList)
         }
         refresh_layout.setOnLoadMoreListener {
             var timestamp = 0L
             if(chatList.size>0){
                 timestamp = chatList[chatList.size-1].sentTime
             }
-            chatBusiness.getChatList(timestamp,Global.PAGE_SIZE,::afterGetChatList)
+            chatBusiness.getChatList(timestamp,Global.PAGE_SIZE,::afterGetList)
         }
     }
 
-    private fun afterGetChatList(list:List<Conversation>?){
+    private fun afterGetList(list:List<Conversation>?){
         if(list!=null){
             chatList.addAll(list)
         }
-        adapter.notifyDataSetChanged()
+        adapter?.notifyDataSetChanged()
 
         if(refresh_layout.isLoading){
             refresh_layout.finishLoadMore()
@@ -74,7 +78,7 @@ class ChatListFragment : BaseFragment() {
         LogUtil.i(TAG,"onMessageReceiveEvent:${event.left}")
         if(event.left==0){
             chatList.clear()
-            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetChatList)
+            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetList)
         }
     }
 
@@ -86,7 +90,7 @@ class ChatListFragment : BaseFragment() {
             app_bar.setTitle("chat list")
             //
             chatList.clear()
-            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetChatList)
+            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetList)
         }else{
             app_bar.setTitle("connect failed")
         }

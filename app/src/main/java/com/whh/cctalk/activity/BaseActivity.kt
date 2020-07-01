@@ -3,8 +3,10 @@ package com.whh.cctalk.activity
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.whh.cctalk.util.LogUtil
+import kotlinx.android.synthetic.main.activity_chat.*
 
 /**
  * Create by huscarter@163.com on 2020/6/11
@@ -37,6 +39,11 @@ abstract class BaseActivity : AppCompatActivity() {
 
         //
         initView()
+
+        //
+        app_bar?.setNavigationListener(View.OnClickListener {
+            finish()
+        })
     }
 
     /**

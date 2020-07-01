@@ -1,6 +1,11 @@
 package com.whh.cctalk.adapter
 
+import android.content.Context
+import android.content.Intent
+import android.os.Bundle
+import com.whh.cctalk.Global
 import com.whh.cctalk.R
+import com.whh.cctalk.activity.ChatActivity
 import com.whh.cctalk.util.CommonUtil
 import com.whh.cctalk.util.DateUtil
 import io.rong.imlib.model.Conversation
@@ -11,10 +16,10 @@ import java.util.Date
 /**
  * Create by huscarter@163.com on 2020/6/22
  * <p>
- * 类说明:
+ * 类说明:The adapter of chat list
  * <p>
  */
-class ChatListAdapter(list: List<Conversation>) : BaseListAdapter<Conversation>(list) {
+class ChatListAdapter(context: Context?,list: List<Conversation>) : BaseListAdapter<Conversation>(context,list) {
 
     /**
      *
@@ -32,7 +37,15 @@ class ChatListAdapter(list: List<Conversation>) : BaseListAdapter<Conversation>(
         }else{
 
         }
-        holder.itemView.tv_time.text = DateUtil.format(Date(conversation.sentTime),"YY/MM/dd HH:MM")
+        holder.itemView.tv_time.text = DateUtil.formatChatTime(conversation.sentTime)
+
+        holder.itemView.setOnClickListener {
+            val intent = Intent(context,ChatActivity::class.java)
+            val bundle = Bundle()
+            bundle.putString(Global.TARGET_ID,conversation.targetId)
+            intent.putExtras(bundle)
+            context?.startActivity(intent)
+        }
     }
 
     override fun getLayout(): Int {

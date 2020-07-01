@@ -10,7 +10,7 @@
         android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/title_height"
-        app:divide_color="@color/transport"
+        app:divide_color="@color/transparent"
         app:title="Connecting..." />
 
     <com.scwang.smart.refresh.layout.SmartRefreshLayout

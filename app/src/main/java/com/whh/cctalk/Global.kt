@@ -15,6 +15,8 @@ object Global{
     const val MOBILE = "mobile"
     const val NAME = "name"
     const val TOKEN = "token"
+    const val USER_ID = "user_id"
+    const val TARGET_ID = "target_id"
 
     const val PAGE_SIZE = 20
 

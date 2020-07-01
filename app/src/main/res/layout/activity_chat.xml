@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.whh.cctalk.view.AppToolBar
+        android:id="@+id/app_bar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        app:title="chat" />
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/title_height"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/margin_small">
+
+        <Button
+            android:id="@+id/btn_send"
+            android:layout_width="@dimen/item_btn_width"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/margin"
+            android:background="@drawable/selector_btn"
+            android:text="send"
+            android:textColor="@color/white"
+            android:textSize="@dimen/font_size" />
+
+        <EditText
+            android:id="@+id/et_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/margin_small"
+            android:layout_toLeftOf="@id/btn_send"
+            android:background="@drawable/shape_edit"
+            android:imeOptions="actionSend"
+            android:padding="@dimen/edit_padding" />
+
+    </RelativeLayout>
+
+    <include
+        android:id="@+id/i_divide"
+        layout="@layout/view_divide"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/divide"
+        android:layout_above="@id/rl_bottom" />
+
+    <com.scwang.smart.refresh.layout.SmartRefreshLayout
+        android:id="@+id/refresh_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/i_divide"
+        android:layout_below="@id/app_bar">
+
+        <com.scwang.smart.refresh.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </com.scwang.smart.refresh.layout.SmartRefreshLayout>
+
+</RelativeLayout>

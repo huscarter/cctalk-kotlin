@@ -26,6 +26,9 @@
             android:launchMode="singleInstance" />
 
         <activity android:name=".activity.LoginActivity" />
+
+        <activity android:name=".activity.ChatActivity"
+            android:windowSoftInputMode="stateHidden"/>
     </application>
 
 </manifest>
