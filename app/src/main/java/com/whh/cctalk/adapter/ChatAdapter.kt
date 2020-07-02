@@ -33,6 +33,9 @@ class ChatAdapter(context: Context?, list: List<Message>) :
         private val TAG = ChatAdapter::class.java.simpleName
     }
 
+    /**
+     * 间隔5分钟给出时间展示
+     */
     private val minDis = 300000
 
     /**
@@ -76,6 +79,7 @@ class ChatAdapter(context: Context?, list: List<Message>) :
         }
         // is sender
         LogUtil.i(TAG,"${msg.senderUserId},${ShareUtil.getString(Global.USER_ID, "")}")
+        holder.itemView.ll_content.removeAllViews()
         if (msg.senderUserId == ShareUtil.getString(Global.USER_ID, "")) {
             holder.itemView.ll_content.gravity = Gravity.RIGHT
             tvContent.setBackgroundResource(R.drawable.shape_chat)

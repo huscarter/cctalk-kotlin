@@ -28,7 +28,7 @@ class ContractBusiness : BaseBusiness() {
      */
     fun getContractList(callback:(List<UserBean>)->Unit){
 
-        Observable.timer(1,TimeUnit.SECONDS)
+        Observable.timer(500,TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(object: Observer<Long>{

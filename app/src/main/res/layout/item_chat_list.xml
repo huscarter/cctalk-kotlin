@@ -67,6 +67,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="content"
+            android:maxLines="1"
+            android:ellipsize="end"
             android:textColor="@color/text_decs"
             android:textSize="@dimen/font_size_desc" />
     </LinearLayout>

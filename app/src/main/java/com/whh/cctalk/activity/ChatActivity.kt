@@ -41,15 +41,24 @@ class ChatActivity : BaseActivity() {
     override fun initView() {
         rv.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,true)
         rv.adapter = adapter
-
+        //
         chatBusiness.getLocalMessage(Conversation.ConversationType.PRIVATE,targetId,0,::afterGetList)
-
+        //
         btn_send.setOnClickListener {
             val content = et_content.text.trim()
             if(!CommonUtil.isEmpty(content)){
                 val msg = Message.obtain(targetId,Conversation.ConversationType.PRIVATE,TextMessage.obtain(content.toString()))
                 chatBusiness.sendMessage(msg,::afterSendMessage)
             }
+        }
+        //
+        refresh_layout.setOnRefreshListener {
+            val messageId = if(msgList.size>0){
+                msgList[msgList.size-1].messageId
+            }else{
+                0
+            }
+            chatBusiness.getLocalMessage(Conversation.ConversationType.PRIVATE,targetId,messageId,::afterGetList)
         }
     }
 
@@ -58,8 +67,10 @@ class ChatActivity : BaseActivity() {
             //
             et_content.text.clear()
             //
-            msgList.add(msg)
+            msgList.add(0,msg)
             adapter?.notifyDataSetChanged()
+
+            rv.scrollToPosition(0)
         }
     }
 
@@ -71,9 +82,10 @@ class ChatActivity : BaseActivity() {
 
         if(refresh_layout.isRefreshing){
             refresh_layout.finishRefresh()
+        }else{
+            // 滑动到最底部，因为reverse了所以定位到0就行
+            rv.scrollToPosition(0)
         }
     }
-
-
 
 }

@@ -33,14 +33,11 @@ object DateUtil {
         if(time==null){
             return ""
         }
-        val nowTime = Date().time
-
-        return if(nowTime-time<24*60*60*1000){
+        return if(isSameDay(Date(),Date(time))){
             val dateFormat = SimpleDateFormat("HH:mm")
             dateFormat.format(time)
         }else{
-            val dateFormat = SimpleDateFormat("YYYY")
-            if(dateFormat.format(Date())==dateFormat.format(Date(time))){
+            if(isSameYear(Date(),Date(time))){
                 val dateFormat = SimpleDateFormat("MM/dd HH:mm")
                 dateFormat.format(time)
             }else{
@@ -49,6 +46,24 @@ object DateUtil {
             }
         }
 
+    }
+
+    fun isSameDay(day0:Date,day1:Date):Boolean{
+        val calendar0 = Calendar.getInstance()
+        calendar0.time = day0
+        val calendar1 = Calendar.getInstance()
+        calendar1.time = day1
+
+        return calendar0.get(Calendar.DAY_OF_MONTH)==calendar1.get(Calendar.DAY_OF_MONTH)
+    }
+
+    fun isSameYear(day0:Date,day1:Date):Boolean{
+        val calendar0 = Calendar.getInstance()
+        calendar0.time = day0
+        val calendar1 = Calendar.getInstance()
+        calendar1.time = day1
+
+        return calendar0.get(Calendar.YEAR)==calendar1.get(Calendar.YEAR)
     }
 
 
