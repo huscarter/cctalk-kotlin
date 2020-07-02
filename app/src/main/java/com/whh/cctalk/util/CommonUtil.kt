@@ -17,4 +17,21 @@ object CommonUtil {
     fun showToast(context: Context,content:String){
         Toast.makeText(context,content,Toast.LENGTH_SHORT).show()
     }
+
+    /**
+     * @param phone 13456729970
+     * @return 134****9970
+     */
+    fun secretPhone(phone: String?): String? {
+        if (isEmpty(phone)) {
+            return ""
+        }
+        return if (phone!!.length < 10) {
+            phone
+        } else {
+            phone!!.replace("(\\d{3})\\d{4}(\\d{4})".toRegex(), "$1****$2")
+        }
+    }
+
+
 }

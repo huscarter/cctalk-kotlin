@@ -36,7 +36,7 @@ class ChatListFragment : BaseFragment() {
         //
         EventBus.getDefault().register(this)
 
-        adapter = ChatListAdapter(context,chatList)
+        adapter = ChatListAdapter(context, chatList)
     }
 
     override fun initView() {
@@ -44,54 +44,54 @@ class ChatListFragment : BaseFragment() {
 
         rv.layoutManager = LinearLayoutManager(context)
         rv.adapter = adapter
-        rv.addItemDecoration(CommonDivide(context,LinearLayoutManager.VERTICAL))
+        rv.addItemDecoration(CommonDivide(context, LinearLayoutManager.VERTICAL))
         //
         refresh_layout.setOnRefreshListener {
             chatList.clear()
-            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetList)
+            chatBusiness.getChatList(0, Global.PAGE_SIZE, ::afterGetList)
         }
         refresh_layout.setOnLoadMoreListener {
             var timestamp = 0L
-            if(chatList.size>0){
-                timestamp = chatList[chatList.size-1].sentTime
+            if (chatList.size > 0) {
+                timestamp = chatList[chatList.size - 1].sentTime
             }
-            chatBusiness.getChatList(timestamp,Global.PAGE_SIZE,::afterGetList)
+            chatBusiness.getChatList(timestamp, Global.PAGE_SIZE, ::afterGetList)
         }
     }
 
-    private fun afterGetList(list:List<Conversation>?){
-        if(list!=null){
+    private fun afterGetList(list: List<Conversation>?) {
+        if (list != null) {
             chatList.addAll(list)
         }
         adapter?.notifyDataSetChanged()
 
-        if(refresh_layout.isLoading){
+        if (refresh_layout.isLoading) {
             refresh_layout.finishLoadMore()
-        }else{
+        } else {
             refresh_layout.finishRefresh()
         }
-        LogUtil.i(TAG,"afterGetChatList size:${chatList.size}")
+        LogUtil.i(TAG, "afterGetChatList size:${chatList.size}")
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onMessageReceiveEvent(event:MessageEvent){
-        LogUtil.i(TAG,"onMessageReceiveEvent:${event.left}")
-        if(event.left==0){
+    fun onMessageReceiveEvent(event: MessageEvent) {
+        LogUtil.i(TAG, "onMessageReceiveEvent:${event.left}")
+        if (event.left == 0) {
             chatList.clear()
-            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetList)
+            chatBusiness.getChatList(0, Global.PAGE_SIZE, ::afterGetList)
         }
     }
 
     @Subscribe(threadMode = ThreadMode.MAIN)
-    fun onConnectEvent(event:ConnectionEvent){
-        LogUtil.i(TAG,"onConnectEvent")
-        if(event.status==RongIMClient.ErrorCode.CONNECTED){
+    fun onConnectEvent(event: ConnectionEvent) {
+        LogUtil.i(TAG, "onConnectEvent:${event.status}")
+        if (event.status == RongIMClient.ErrorCode.CONNECTED || event.status == RongIMClient.ErrorCode.RC_CONN_REDIRECTED) {
             //
             app_bar.setTitle("chat list")
             //
             chatList.clear()
-            chatBusiness.getChatList(0,Global.PAGE_SIZE,::afterGetList)
-        }else{
+            chatBusiness.getChatList(0, Global.PAGE_SIZE, ::afterGetList)
+        } else {
             app_bar.setTitle("connect failed")
         }
     }

@@ -91,8 +91,8 @@ class AppToolBar : LinearLayout {
 
     }
 
-    fun setTitle(title:String){
-        tv_title.text = title
+    fun setTitle(title:String?){
+        tv_title.text = title?:""
     }
 
     fun getTitle():String{

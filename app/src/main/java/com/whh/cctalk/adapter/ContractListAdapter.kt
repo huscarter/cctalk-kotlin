@@ -7,6 +7,7 @@ import com.whh.cctalk.Global
 import com.whh.cctalk.R
 import com.whh.cctalk.activity.ChatActivity
 import com.whh.cctalk.mode.bean.UserBean
+import com.whh.cctalk.util.CommonUtil
 import com.whh.cctalk.util.DateUtil
 import kotlinx.android.synthetic.main.item_chat_list.view.*
 import java.util.*
@@ -26,7 +27,7 @@ class ContractListAdapter(context: Context?, list: List<UserBean>) : BaseListAda
 
         val user = list[position]
 
-        holder.itemView.tv_name.text = user.userName?:user.userId
+        holder.itemView.tv_name.text = user.userName?: CommonUtil.secretPhone(user.userId)
         holder.itemView.tv_time.text = DateUtil.formatChatTime(user.sentTime)
 
         holder.itemView.setOnClickListener {

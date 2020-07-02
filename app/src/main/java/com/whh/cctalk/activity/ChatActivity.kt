@@ -5,17 +5,11 @@ import com.whh.cctalk.Global
 import com.whh.cctalk.R
 import com.whh.cctalk.adapter.ChatAdapter
 import com.whh.cctalk.business.ChatBusiness
-import com.whh.cctalk.fragment.BaseFragment
-import com.whh.cctalk.mode.bean.UserBean
 import com.whh.cctalk.util.CommonUtil
-import com.whh.cctalk.util.LogUtil
 import io.rong.imlib.model.Conversation
 import io.rong.imlib.model.Message
 import io.rong.message.TextMessage
 import kotlinx.android.synthetic.main.activity_chat.*
-import kotlinx.android.synthetic.main.activity_chat.refresh_layout
-import kotlinx.android.synthetic.main.activity_chat.rv
-import kotlinx.android.synthetic.main.fragment_chat_list.*
 
 /**
  * The chat page
@@ -36,9 +30,12 @@ class ChatActivity : BaseActivity() {
         adapter = ChatAdapter(context,msgList)
 
         targetId = intent.extras?.getString(Global.TARGET_ID)
+
+        app_bar.setTitle(CommonUtil.secretPhone(targetId))
     }
 
     override fun initView() {
+
         rv.layoutManager = LinearLayoutManager(context,LinearLayoutManager.VERTICAL,true)
         rv.adapter = adapter
         //

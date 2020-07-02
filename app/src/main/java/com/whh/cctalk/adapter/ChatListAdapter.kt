@@ -28,7 +28,7 @@ class ChatListAdapter(context: Context?,list: List<Conversation>) : BaseListAdap
 
         val conversation = list[position]
         if(CommonUtil.isEmpty(conversation.senderUserName)){
-            holder.itemView.tv_name.text = conversation.targetId
+            holder.itemView.tv_name.text = CommonUtil.secretPhone(conversation.targetId)
         }else{
             holder.itemView.tv_name.text = conversation.senderUserName
         }
